@@ -1,6 +1,4 @@
 const express = require('express');
-const findAllClientes = require('../service/clienteService');
-const findAllProductos = require('../service/productoService');
 
 class Server{
 
@@ -10,15 +8,8 @@ class Server{
     }
 
     routes(){
-        this._app.get('/clientes', async (req, res) => {
-            const arregloClientes = await findAllClientes();
-            res.json(arregloClientes);
-        });
-
-        this._app.get('/productos', async (req, res) => {
-            const arregloProductos = await findAllProductos();
-            res.json(arregloProductos);
-        });
+        this._app.use('/productos', require('../routes/productoRoutes'));
+        this._app.use('/clientes', require('../routes/clienteRoutes'));
     }
 
     listen(){
