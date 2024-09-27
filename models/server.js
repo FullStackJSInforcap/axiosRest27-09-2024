@@ -1,5 +1,6 @@
 const express = require('express');
 const findAllClientes = require('../service/clienteService');
+const findAllProductos = require('../service/productoService');
 
 class Server{
 
@@ -14,8 +15,9 @@ class Server{
             res.json(arregloClientes);
         });
 
-        this._app.get('/productos', (req, res) => {
-            res.send('Funcionando');
+        this._app.get('/productos', async (req, res) => {
+            const arregloProductos = await findAllProductos();
+            res.json(arregloProductos);
         });
     }
 
