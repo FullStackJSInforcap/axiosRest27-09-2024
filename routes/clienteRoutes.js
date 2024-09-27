@@ -1,27 +1,16 @@
 const { Router } = require('express');
-const findAllClientes = require('../service/clienteService');
+const { findAllClientesController, findByIdClientesController, insertController, updateController, deleteByIdController } = require('../controllers/clienteController');
 
 const router = Router();
 
-router.get('/', async (req, res) => {
-    const arregloClientes = await findAllClientes();
-    res.json(arregloClientes);
-});
+router.get('/', findAllClientesController);
 
-router.get('/:id', (req, res) => {
-    res.json('FindById Clientes');
-});
+router.get('/:id', findByIdClientesController);
 
-router.post('/', (req, res) => {
-    res.json('Insert Clientes');
-});
+router.post('/', insertController);
 
-router.put('/', (req, res) => {
-    res.json('Update Clientes');
-});
+router.put('/', updateController);
 
-router.delete('/', (req, res) => {
-    res.json('Delete Clientes');
-});
+router.delete('/', deleteByIdController);
 
 module.exports = router;
