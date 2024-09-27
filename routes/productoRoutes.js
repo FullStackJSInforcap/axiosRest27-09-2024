@@ -1,27 +1,16 @@
 const { Router } = require('express');
-const findAllProductos = require('../service/productoService');
+const { findAllProductosController, findByIdController, insertController, updateController, deleteByIdController } = require('../controllers/productoController');
 
 const router = Router();
 
-router.get('/', async (req, res) => {
-    const arregloProductos = await findAllProductos();
-    res.json(arregloProductos);
-});
+router.get('/', findAllProductosController);
 
-router.get('/:id', (req, res) => {
-    res.json('FindById Productos');
-});
+router.get('/:id', findByIdController);
 
-router.post('/', (req, res) => {
-    res.json('Insert Productos');
-});
+router.post('/', insertController);
 
-router.put('/', (req, res) => {
-    res.json('Update Productos');
-});
+router.put('/', updateController);
 
-router.delete('/', (req, res) => {
-    res.json('Delete Productos');
-});
+router.delete('/', deleteByIdController);
 
 module.exports = router;
