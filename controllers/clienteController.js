@@ -10,15 +10,27 @@ const findByIdClientesController = (req, res) => {
 }
 
 const insertController = (req, res) => {
-    res.json('Insert Clientes');
+    const parametros = req.body;
+    res.json({
+        msg: 'Insert Cliente',
+        parametros
+    });
 }
 
 const updateController = (req, res) => {
-    res.json('Update Clientes');
+    const parametros = req.body;
+    res.json({
+        msg: 'Update Clientes',
+        parametros
+    });
 }
 
 const deleteByIdController = (req, res) => {
-    res.json('Delete Clientes');
+    const id = req.params.id;
+    res.json({
+        msg: 'Delete Clientes',
+        id
+    });
 }
 
 module.exports = {
